@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Erru\Functions;
 
-use Twig\Loader\FilesystemLoader;
-use Twig\Environment;
-
 /**
  * Functions.
  */

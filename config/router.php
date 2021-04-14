@@ -19,16 +19,12 @@ $router->addRoute("GET", "/test", function () {
 
 $router->addRoute("GET", "/", "\Erru\Controller\Index");
 $router->addRoute("GET", "/debug", "\Erru\Controller\Debug");
-$router->addRoute("GET", "/twig", "\Erru\Controller\TwigView");
-$router->addRoute("GET", "/game-21", "\Erru\Controller\game-21");
+$router->addRoute("GET", "/game-21", "\Erru\Controller\Game21");
+$router->addRoute("POST", "/game-21", "\Erru\Controller\Game21");
 
 $router->addGroup("/session", function (RouteCollector $router) {
     $router->addRoute("GET", "", ["\Erru\Controller\Session", "index"]);
     $router->addRoute("GET", "/destroy", ["\Erru\Controller\Session", "destroy"]);
-});
-
-$router->addGroup("/some", function (RouteCollector $router) {
-    $router->addRoute("GET", "/where", ["\Erru\Controller\Sample", "where"]);
 });
 
 $router->addGroup("/form", function (RouteCollector $router) {

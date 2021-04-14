@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace Erru\Dice;
 
-use Twig\Loader\FilesystemLoader;
-use Twig\Environment;
-
 /**
  * DiceHand Functions.
  */
+
 class DiceHand extends GraphicalDice
 {
 

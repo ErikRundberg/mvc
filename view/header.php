@@ -25,7 +25,8 @@ use function Erru\Functions\url;
         <a href="<?= url("/session") ?>">Session</a> |
         <a href="<?= url("/debug") ?>">Debug</a> |
         <a href="<?= url("/form/view") ?>">Form</a> |
-        <a href="<?= url("/game-21") ?>">Game 21</a>
+        <a href="<?= url("/game-21") ?>">Game 21</a> |
+        <a href="<?= url("/yatzy") ?>">Yatzy</a>
     </nav>
 </header>
 <main>

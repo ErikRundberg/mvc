@@ -65,3 +65,14 @@ i {
 .center {
   text-align: center;
 }
+
+table.left-border {
+  border-left: 2px solid grey;
+}
+
+table {
+  padding: 1em;
+}
+table * {
+  padding: 0.25em 0.5em;
+}

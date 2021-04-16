@@ -33,3 +33,17 @@ i {
 .dice-utf8 {
     font-size: 32px;
 }
+
+.flex {
+    display: flex;
+    justify-content: center;
+    div {
+        padding: 0 0.25em;
+        margin: 0 0.25em;
+        text-align: center;
+    }
+}
+
+.center {
+    text-align: center;
+}

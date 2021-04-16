@@ -20,7 +20,7 @@ use function Erru\Functions\url;
 <body>
 
 <header>
-    <nav>
+    <nav class="center">
         <a href="<?= url("/") ?>">Home</a> |
         <a href="<?= url("/session") ?>">Session</a> |
         <a href="<?= url("/debug") ?>">Debug</a> |

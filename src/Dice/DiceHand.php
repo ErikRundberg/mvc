@@ -13,6 +13,7 @@ class DiceHand extends GraphicalDice
 
     private $dices = [];
     private $allClasses = [];
+    private $allThrows = [];
     private $sum;
 
     public function __construct($dices)
@@ -29,12 +30,18 @@ class DiceHand extends GraphicalDice
             $this->sum += $dice->getLastRoll();
             $dice->makeDie();
             $this->allClasses[] = $dice->getClass();
+            $this->allThrows[] = $dice->getLastRoll();
         }
     }
 
     public function getResult(): array
     {
         return $this->allClasses;
+    }
+
+    public function getThrows(): array
+    {
+        return $this->allThrows;
     }
 
     public function getSum(): int

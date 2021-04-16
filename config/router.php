@@ -22,6 +22,7 @@ $router->addRoute("GET", "/debug", "\Erru\Controller\Debug");
 $router->addRoute("GET", "/game-21", "\Erru\Controller\Game21");
 $router->addRoute("POST", "/game-21", "\Erru\Controller\Game21");
 $router->addRoute("GET", "/yatzy", "\Erru\Controller\Yatzy");
+$router->addRoute("POST", "/yatzy", "\Erru\Controller\Yatzy");
 
 $router->addGroup("/session", function (RouteCollector $router) {
     $router->addRoute("GET", "", ["\Erru\Controller\Session", "index"]);

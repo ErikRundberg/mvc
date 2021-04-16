@@ -20,11 +20,13 @@ class Yatzy
         $psr17Factory = new Psr17Factory();
 
         $yf = new YatzyFunctions();
+        $yf->checkPosts();
 
         $data = [
             "title" => "Yatzy",
-            "header" => "Yatzy",
-            "message" => "ROLL ON"
+            "header" => $yf->getRound(),
+            "dice" => $_SESSION["yatzyDice"],
+            "table" => [$_SESSION["table"], $_SESSION["tableData"]]
         ];
 
         $body = renderView("layout/yatzy.php", $data);

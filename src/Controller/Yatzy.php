@@ -6,9 +6,9 @@ namespace Erru\Controller;
 
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Message\ResponseInterface;
+use Erru\Dice\YatzyFunctions;
 
 use function Erru\Functions\renderView;
-use Erru\Dice\YatzyFunctions;
 
 /**
  * Controller for the game-21 route.
@@ -19,12 +19,12 @@ class Yatzy
     {
         $psr17Factory = new Psr17Factory();
 
-        $yf = new YatzyFunctions();
-        $yf->checkPosts();
+        $yatzy = new YatzyFunctions();
+        $yatzy->checkPosts();
 
         $data = [
             "title" => "Yatzy",
-            "header" => $yf->getRound(),
+            "header" => $yatzy->getRound(),
             "dice" => $_SESSION["yatzyDice"],
             "table" => [$_SESSION["table"], $_SESSION["tableData"]]
         ];

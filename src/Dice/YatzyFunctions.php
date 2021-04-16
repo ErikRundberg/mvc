@@ -9,7 +9,7 @@ namespace Erru\Dice;
  */
 class YatzyFunctions
 {
-    function checkPosts(): void
+    public function checkPosts(): void
     {
         $sessionKeys = ["yatzyDice", "yatzyRound", "roll", "diceArray", "tableData", "table"];
         foreach ($sessionKeys as $key) {
@@ -24,7 +24,7 @@ class YatzyFunctions
         $this->endGame();
     }
 
-    function startYatzy(): void
+    public function startYatzy(): void
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["startYatzy"])) {
             $_SESSION["yatzyRound"] = 1;
@@ -34,9 +34,9 @@ class YatzyFunctions
         }
     }
 
-    function rollDice(): void
+    public function rollDice(): void
     {
-        if($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["rollYatzy"])) {
+        if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["rollYatzy"])) {
             $_SESSION["roll"] += 1 ?? 1;
             $_SESSION["DiceHand"] = new DiceHand(5);
             $_SESSION["DiceHand"]->rollAll();
@@ -44,7 +44,7 @@ class YatzyFunctions
         }
     }
 
-    function forceRoll(): void
+    private function forceRoll(): void
     {
         $_SESSION["roll"] += 1 ?? 1;
         $_SESSION["DiceHand"] = new DiceHand(5);
@@ -52,9 +52,9 @@ class YatzyFunctions
         $_SESSION["yatzyDice"] = $_SESSION["DiceHand"]->getResult();
     }
 
-    function keepDice(): void
+    public function keepDice(): void
     {
-        if($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["keepDice"])) {
+        if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["keepDice"])) {
             if (empty($_POST["diceArray"])) {
                 $this->forceRoll();
             } else {
@@ -67,23 +67,22 @@ class YatzyFunctions
         }
     }
 
-    function keepRoll($keptDice=[0]): void
+    private function keepRoll($keptDice = [0]): void
     {
         $_SESSION["roll"] += 1 ?? 1;
         $_SESSION["DiceHand"] = new DiceHand(5);
         $_SESSION["DiceHand"]->rollAll();
         $_SESSION["yatzyDice"] = $_SESSION["DiceHand"]->getKeptResult($keptDice);
-
     }
 
-    function nextRound(): void
+    public function nextRound(): void
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["nextRound"])) {
-            $round = $_SESSION["yatzyRound"]-1;
+            $round = $_SESSION["yatzyRound"] - 1;
             $sum = 0;
             $throws = $_SESSION["DiceHand"]->getThrows();
             foreach ($throws as $throw) {
-                if ($throw == $round+1) {
+                if ($throw == $round + 1) {
                     $sum += $throw;
                 }
             }
@@ -94,7 +93,7 @@ class YatzyFunctions
         }
     }
 
-    function setupTable(): void
+    public function setupTable(): void
     {
         $_SESSION["table"] = ["1", "2", "3", "4", "5", "6", "Sum", "Bonus", "Total"];
         foreach (range(0, 8) as $index) {
@@ -102,7 +101,7 @@ class YatzyFunctions
         }
     }
 
-    function getRound(): ?string
+    public function getRound(): ?string
     {
         if (isset($_SESSION["yatzyRound"])) {
             if ($_SESSION["yatzyRound"] > 6) {
@@ -113,12 +112,12 @@ class YatzyFunctions
         return null;
     }
 
-    function endGame(): void
+    public function endGame(): void
     {
         if ($_SESSION["yatzyRound"] == 7) {
             $sum = 0;
             $_SESSION["yatzyDice"] = null;
-            for ($i=0; $i < 6; $i++) {
+            for ($i = 0; $i < 6; $i++) {
                 $sum += $_SESSION["tableData"][$i];
             }
             $_SESSION["tableData"][6] = $sum;
@@ -130,7 +129,6 @@ class YatzyFunctions
             $_SESSION["tableData"][8] = $sum + $_SESSION["tableData"][7];
         }
     }
-
 }
 
 // checkbox value = dice.value (maybe position?)

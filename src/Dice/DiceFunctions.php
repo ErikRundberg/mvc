@@ -9,7 +9,7 @@ namespace Erru\Dice;
  */
 class DiceFunctions
 {
-    function checkPosts(): void
+    public function checkPosts(): void
     {
         $gameSessionKeys = ["message", "win", "lose", "dices", "sum", "compSum", "diceAmt"];
         foreach ($gameSessionKeys as $key) {
@@ -24,16 +24,16 @@ class DiceFunctions
         $this->postBack();
     }
 
-    function postStart(): void
+    public function postStart(): void
     {
-        if($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["start"])) {
+        if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["start"])) {
             $_SESSION["diceAmt"] = $_POST["diceAmt"];
             $_POST["roll"] = "pass";
             $this->postRoll();
         };
     }
 
-    function forceRoll(): void
+    public function forceRoll(): void
     {
         $diceHand = new DiceHand($_SESSION["diceAmt"]);
         $diceHand->rollAll();
@@ -42,17 +42,17 @@ class DiceFunctions
         $_SESSION["message"] = $diceHand->calculateWin();
     }
 
-    function postReset(): void
+    public function postReset(): void
     {
-        if($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["reset"])) {
+        if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["reset"])) {
             $_SESSION["wins"] = null;
             $_SESSION["lose"] = null;
         };
     }
 
-    function postRoll(): void
+    public function postRoll(): void
     {
-        if($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["roll"])) {
+        if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["roll"])) {
             $diceHand = new DiceHand($_SESSION["diceAmt"]);
             $diceHand->rollAll();
             $_SESSION["dices"] = $diceHand->getResult();
@@ -61,18 +61,18 @@ class DiceFunctions
         };
     }
 
-    function postStop(): void
+    public function postStop(): void
     {
-        if($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["stop"])) {
+        if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["stop"])) {
             $diceHand = new DiceHand($_SESSION["diceAmt"]);
             $_SESSION["compSum"] = $diceHand->computerRoll();
             $_SESSION["message"] = $diceHand->calculateWin();
         };
     }
 
-    function postBack(): void
+    public function postBack(): void
     {
-        if($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["back"])) {
+        if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["back"])) {
             $_SESSION["message"] = null;
             $_SESSION["diceAmt"] = null;
             $_SESSION["sum"] = null;
@@ -80,5 +80,4 @@ class DiceFunctions
             $_SESSION["dices"] = null;
         };
     }
-
 }

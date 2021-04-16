@@ -6,9 +6,9 @@ namespace Erru\Controller;
 
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Message\ResponseInterface;
+use Erru\Dice\DiceFunctions;
 
 use function Erru\Functions\renderView;
-use Erru\Dice\DiceFunctions;
 
 /**
  * Controller for the game-21 route.
@@ -19,8 +19,8 @@ class Game21
     {
         $psr17Factory = new Psr17Factory();
 
-        $df = new DiceFunctions();
-        $df->checkPosts();
+        $dice = new DiceFunctions();
+        $dice->checkPosts();
 
         $data = [
             "header" => "Game 21",

@@ -42,17 +42,14 @@ $compSum = $compSum ?? 0;
 
 <?php if ($dices !== null) : ?>
 <p class="dice-utf8">
-<?php foreach ($dices as $value) : ?>
+    <?php foreach ($dices as $value) : ?>
     <i class="<?= $value[0] ?>"></i>
-<?php endforeach; ?>
+    <?php endforeach; ?>
 </p>
 <p>Sum: <?= $sum ?></p>
 <p>Computer sum: <?= $compSum ?></p>
 <h1><?= $message ?></h1>
-
-<?php if($message !== "Player lost!") : ?>
-
-
+    <?php if ($message !== "Player lost!") : ?>
 <form method="post">
     <button type="submit" name"roll">Roll</button>
 </form>
@@ -61,7 +58,7 @@ $compSum = $compSum ?? 0;
     <button type="submit" name="stop">Stop</button>
 </form>
 <br>
-<?php endif; ?>
+    <?php endif; ?>
 
 <form method="post">
     <button type="submit" name="back">Return</button>

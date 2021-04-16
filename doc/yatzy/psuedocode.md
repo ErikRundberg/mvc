@@ -1,8 +1,9 @@
-http://users.csc.calpoly.edu/~jdalbey/SWE/pdl_std.html
-
-5 tärningar
-3 kast
-Man får välja vilka man vill behålla / om man vill stanna
-Man går från ettor ner till sexor
-Efter 6 kastomgånger så räknar poängen
-Har man över 63 poäng så får man 50 poäng bonus
+Create container for all five dices where each dice has six sides
+Create table containing round and points
+Start the game
+Allow player to either roll all dice or keep some and roll the rest
+Maximum three rolls allowed per round
+After each round add points to table if dice is same as round
+After all six rounds, summarize points
+If points are over 63, give bonus 50 points
+End game

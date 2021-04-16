@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Standard view template to generate a simple web page, or part of a web page.
+ * Yatzy view template
  */
 
 declare(strict_types=1);
@@ -30,9 +30,9 @@ $table = $table ?? [];
 </div>
 
 <div class="flex">
-    <div class="center">
+    <?php if ($_SESSION["yatzyRound"] <= 6): ?>
+    <div class="center big">
     <!-- Roll die -->
-
     <?php if (isset($_SESSION["yatzyRound"]) and $_SESSION["roll"] != 3): ?>
         <p>Roll: <?= $_SESSION["roll"] ?>/3</p>
         <form method="post">
@@ -49,7 +49,9 @@ $table = $table ?? [];
                 <p class="dice-utf8">
                     <i class="<?= $die[0] ?>"></i>
                 </p>
+                <?php if ($_SESSION["roll"] != 3): ?>
                 <input type="checkbox" name="diceArray[]" value="<?= $die[0] ?>">
+                <?php endif; ?>
             </div>
             <?php endforeach; ?>
         </div>
@@ -62,18 +64,19 @@ $table = $table ?? [];
     <?php if (isset($_SESSION["yatzyDice"])): ?>
     <br>
     <form class="flex" method="post">
-        <button type="submit" name="nextRound">Next</button>
+        <button type="submit" name="nextRound">Stop</button>
     </form>
     <br>
     <?php endif; ?>
     <?php endif; ?>
     </div>
+    <?php endif; ?>
 
     <!-- Score table -->
     <div class="center">
         <?php if (isset($_SESSION["DiceHand"])): ?>
         <div class="flex">
-            <table class="center left-border">
+            <table class="center right-border">
                 <thead>
                     <th>Round</th>
                     <th>Score</th>

@@ -61,13 +61,17 @@ i {
   margin: 0 0.25em;
   text-align: center;
 }
+.flex .big {
+  flex-grow: 2;
+  order: 2;
+}
 
 .center {
   text-align: center;
 }
 
-table.left-border {
-  border-left: 2px solid grey;
+table.right-border {
+  border-right: 2px solid grey;
 }
 
 table {

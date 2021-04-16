@@ -79,4 +79,18 @@ class DiceHand extends GraphicalDice
         $_SESSION["lose"] += 1;
         return "Player lost!";
     }
+
+    public function getKeptResult($dices): array
+    {
+        $newThrow = $this->getResult();
+        $this->allThrows = [];
+        foreach ($dices as $dice) {
+            $newThrow[] = [$dice];
+        }
+        $newArray = array_slice($newThrow, -5);
+        foreach ($newArray as $value) {
+            $this->allThrows[] = substr($value[0], -1);
+        }
+        return $newArray;
+    }
 }

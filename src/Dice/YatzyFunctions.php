@@ -21,6 +21,7 @@ class YatzyFunctions
         $this->keepDice();
         $this->rollDice();
         $this->nextRound();
+        $this->endGame();
     }
 
     function startYatzy(): void
@@ -33,38 +34,46 @@ class YatzyFunctions
         }
     }
 
-    function rollDice($diceAmount=5): void
+    function rollDice(): void
     {
         if($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["rollYatzy"])) {
             $_SESSION["roll"] += 1 ?? 1;
-            $_SESSION["DiceHand"] = new DiceHand($diceAmount);
+            $_SESSION["DiceHand"] = new DiceHand(5);
             $_SESSION["DiceHand"]->rollAll();
             $_SESSION["yatzyDice"] = $_SESSION["DiceHand"]->getResult();
         }
+    }
+
+    function forceRoll(): void
+    {
+        $_SESSION["roll"] += 1 ?? 1;
+        $_SESSION["DiceHand"] = new DiceHand(5);
+        $_SESSION["DiceHand"]->rollAll();
+        $_SESSION["yatzyDice"] = $_SESSION["DiceHand"]->getResult();
     }
 
     function keepDice(): void
     {
         if($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["keepDice"])) {
             if (empty($_POST["diceArray"])) {
-                $this->keepRoll();
+                $this->forceRoll();
             } else {
                 $keptDice = [];
                 foreach ($_POST["diceArray"] as $dice) {
-                    $dice = substr($dice, -1);
                     $keptDice[] = $dice;
                 }
-                $this->keepRoll();
+                $this->keepRoll($keptDice);
             }
         }
     }
 
-    function keepRoll($diceAmount=5): void
+    function keepRoll($keptDice=[0]): void
     {
         $_SESSION["roll"] += 1 ?? 1;
-        $_SESSION["DiceHand"] = new DiceHand($diceAmount);
+        $_SESSION["DiceHand"] = new DiceHand(5);
         $_SESSION["DiceHand"]->rollAll();
-        $_SESSION["yatzyDice"] = $_SESSION["DiceHand"]->getResult();
+        $_SESSION["yatzyDice"] = $_SESSION["DiceHand"]->getKeptResult($keptDice);
+
     }
 
     function nextRound(): void
@@ -96,9 +105,30 @@ class YatzyFunctions
     function getRound(): ?string
     {
         if (isset($_SESSION["yatzyRound"])) {
+            if ($_SESSION["yatzyRound"] > 6) {
+                return "Game Finished!";
+            }
             return "Round: " . $_SESSION["yatzyRound"];
         }
         return null;
+    }
+
+    function endGame(): void
+    {
+        if ($_SESSION["yatzyRound"] == 7) {
+            $sum = 0;
+            $_SESSION["yatzyDice"] = null;
+            for ($i=0; $i < 6; $i++) {
+                $sum += $_SESSION["tableData"][$i];
+            }
+            $_SESSION["tableData"][6] = $sum;
+            if ($sum >= 50) {
+                $_SESSION["tableData"][7] = 50;
+            } else {
+                $_SESSION["tableData"][7] = 0;
+            }
+            $_SESSION["tableData"][8] = $sum + $_SESSION["tableData"][7];
+        }
     }
 
 }

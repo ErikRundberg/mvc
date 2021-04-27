@@ -1,5 +1,9 @@
 <?php
 
+namespace Erru\Functions;
+
+use PHPUnit\Framework\TestCase;
+
 use function Erru\Functions\{
     getRoutePath,
     sendResponse,
@@ -7,8 +11,6 @@ use function Erru\Functions\{
     destroySession,
     resetScore
 };
-
-use PHPUnit\Framework\TestCase;
 
 /**
  * Test cases for class Functions.
@@ -29,7 +31,7 @@ class FunctionsTest extends TestCase
     {
         $exp = "test";
         $this->expectOutputString($exp);
-        $res = sendResponse("test");
+        sendResponse("test");
         $this->assertEquals(http_response_code(), 200);
     }
 
@@ -67,5 +69,4 @@ class FunctionsTest extends TestCase
         $this->assertEquals($_SESSION["win"], 0);
         $this->assertEquals($_SESSION["lose"], 0);
     }
-
 }

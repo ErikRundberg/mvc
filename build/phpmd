@@ -1,2 +1,0 @@
-C:\Users\d_coo\dbwebb-kurser\mvc\me\game\src\Dice\YatzyFunctions.php:60	The method keepDice uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them.
-C:\Users\d_coo\dbwebb-kurser\mvc\me\game\src\Dice\YatzyFunctions.php:126	The method endGame uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them.

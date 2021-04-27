@@ -95,4 +95,46 @@ class YatzyFunctionsTest extends TestCase
         $exp = 110;
         $this->assertEquals($res, $exp);
     }
+
+    public function testKeepDiceEmpty()
+    {
+        $yatzyFunctions = new YatzyFunctions();
+        $this->assertInstanceOf("\Erru\Dice\YatzyFunctions", $yatzyFunctions);
+        $_SERVER["REQUEST_METHOD"] = "POST";
+        $_POST["keepDice"] = "set";
+
+        $_SESSION["roll"] = 0;
+        $_POST["diceArray"] = [];
+        $yatzyFunctions->keepDice();
+        $this->assertEquals($_SESSION["roll"], 2);
+    }
+
+    public function testKeepDice()
+    {
+        $yatzyFunctions = new YatzyFunctions();
+        $this->assertInstanceOf("\Erru\Dice\YatzyFunctions", $yatzyFunctions);
+        $_SERVER["REQUEST_METHOD"] = "POST";
+        $_POST["keepDice"] = "set";
+
+        $_SESSION["roll"] = 0;
+        $_POST["diceArray"] = ["dice-1", "dice-1"];
+        $yatzyFunctions->keepDice();
+        $this->assertEquals($_SESSION["roll"], 1);
+    }
+
+    public function testNextRound()
+    {
+        $yatzyFunctions = new YatzyFunctions();
+        $this->assertInstanceOf("\Erru\Dice\YatzyFunctions", $yatzyFunctions);
+        $_SERVER["REQUEST_METHOD"] = "POST";
+        $_POST["nextRound"] = "set";
+        $_SESSION["yatzyRound"] = 1;
+        $_SESSION["DiceHand"] = new DiceHand(1, 1);
+        $_SESSION["DiceHand"]->rollAll();
+
+        $yatzyFunctions->nextRound();
+        $this->assertEquals($_SESSION["roll"], 0);
+        $this->assertEquals($_SESSION["tableData"][0], 1);
+        $this->assertNull($_SESSION["yatzyDice"]);
+    }
 }

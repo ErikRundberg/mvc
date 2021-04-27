@@ -3,12 +3,12 @@ PHPUnit 9.5.4 by Sebastian Bergmann and contributors.
 Warning:       Your XML configuration validates against a deprecated schema.
 Suggestion:    Migrate your XML configuration using "--migrate-configuration"!
 
-....................................                              36 / 36 (100%)
+.......................................                           39 / 39 (100%)
 
-Time: 00:01.368, Memory: 18.00 MB
+Time: 00:01.450, Memory: 18.00 MB
 
-OK (36 tests, 72 assertions)
+OK (39 tests, 80 assertions)
 
-Generating code coverage report in Clover XML format ... done [00:00.075]
+Generating code coverage report in Clover XML format ... done [00:00.072]
 
-Generating code coverage report in HTML format ... done [00:00.175]
+Generating code coverage report in HTML format ... done [00:00.163]

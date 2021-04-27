@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1619553884">
-  <project timestamp="1619553884">
+<coverage generated="1619557862">
+  <project timestamp="1619557862">
     <file name="C:\Users\d_coo\dbwebb-kurser\mvc\me\game\src\Controller\Debug.php">
       <class name="Erru\Controller\Debug" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="5" coveredelements="0"/>
@@ -122,14 +122,14 @@
       <class name="Erru\Dice\Dice" namespace="global">
         <metrics complexity="3" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="8" coveredelements="8"/>
       </class>
-      <line num="16" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="20"/>
-      <line num="18" type="stmt" count="20"/>
-      <line num="19" type="stmt" count="20"/>
-      <line num="21" type="method" name="roll" visibility="public" complexity="1" crap="1" count="10"/>
-      <line num="23" type="stmt" count="10"/>
-      <line num="24" type="stmt" count="10"/>
-      <line num="26" type="method" name="getLastRoll" visibility="public" complexity="1" crap="1" count="10"/>
-      <line num="28" type="stmt" count="10"/>
+      <line num="16" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="23"/>
+      <line num="18" type="stmt" count="23"/>
+      <line num="19" type="stmt" count="23"/>
+      <line num="21" type="method" name="roll" visibility="public" complexity="1" crap="1" count="13"/>
+      <line num="23" type="stmt" count="13"/>
+      <line num="24" type="stmt" count="13"/>
+      <line num="26" type="method" name="getLastRoll" visibility="public" complexity="1" crap="1" count="13"/>
+      <line num="28" type="stmt" count="13"/>
       <metrics loc="30" ncloc="27" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="8" coveredelements="8"/>
     </file>
     <file name="C:\Users\d_coo\dbwebb-kurser\mvc\me\game\src\Dice\DiceFunctions.php">
@@ -193,22 +193,22 @@
       <class name="Erru\Dice\DiceHand" namespace="global">
         <metrics complexity="19" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="37" coveredstatements="37" elements="46" coveredelements="46"/>
       </class>
-      <line num="19" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="16"/>
-      <line num="21" type="stmt" count="16"/>
-      <line num="22" type="stmt" count="16"/>
-      <line num="24" type="stmt" count="16"/>
-      <line num="26" type="method" name="rollAll" visibility="public" complexity="2" crap="2" count="8"/>
-      <line num="28" type="stmt" count="8"/>
-      <line num="29" type="stmt" count="8"/>
-      <line num="30" type="stmt" count="8"/>
-      <line num="31" type="stmt" count="8"/>
-      <line num="32" type="stmt" count="8"/>
-      <line num="33" type="stmt" count="8"/>
-      <line num="35" type="stmt" count="8"/>
-      <line num="37" type="method" name="getResult" visibility="public" complexity="1" crap="1" count="5"/>
-      <line num="39" type="stmt" count="5"/>
-      <line num="42" type="method" name="getThrows" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="44" type="stmt" count="1"/>
+      <line num="19" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="19"/>
+      <line num="21" type="stmt" count="19"/>
+      <line num="22" type="stmt" count="19"/>
+      <line num="24" type="stmt" count="19"/>
+      <line num="26" type="method" name="rollAll" visibility="public" complexity="2" crap="2" count="11"/>
+      <line num="28" type="stmt" count="11"/>
+      <line num="29" type="stmt" count="11"/>
+      <line num="30" type="stmt" count="11"/>
+      <line num="31" type="stmt" count="11"/>
+      <line num="32" type="stmt" count="11"/>
+      <line num="33" type="stmt" count="11"/>
+      <line num="35" type="stmt" count="11"/>
+      <line num="37" type="method" name="getResult" visibility="public" complexity="1" crap="1" count="7"/>
+      <line num="39" type="stmt" count="7"/>
+      <line num="42" type="method" name="getThrows" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="44" type="stmt" count="2"/>
       <line num="47" type="method" name="getSum" visibility="public" complexity="1" crap="1" count="3"/>
       <line num="49" type="stmt" count="3"/>
       <line num="52" type="method" name="overLimit" visibility="public" complexity="2" crap="2" count="2"/>
@@ -230,34 +230,34 @@
       <line num="77" type="stmt" count="1"/>
       <line num="79" type="stmt" count="2"/>
       <line num="80" type="stmt" count="2"/>
-      <line num="83" type="method" name="getKeptResult" visibility="public" complexity="3" crap="3" count="1"/>
-      <line num="85" type="stmt" count="1"/>
-      <line num="86" type="stmt" count="1"/>
-      <line num="87" type="stmt" count="1"/>
-      <line num="88" type="stmt" count="1"/>
-      <line num="90" type="stmt" count="1"/>
-      <line num="91" type="stmt" count="1"/>
-      <line num="92" type="stmt" count="1"/>
-      <line num="94" type="stmt" count="1"/>
+      <line num="83" type="method" name="getKeptResult" visibility="public" complexity="3" crap="3" count="3"/>
+      <line num="85" type="stmt" count="3"/>
+      <line num="86" type="stmt" count="3"/>
+      <line num="87" type="stmt" count="3"/>
+      <line num="88" type="stmt" count="2"/>
+      <line num="90" type="stmt" count="3"/>
+      <line num="91" type="stmt" count="3"/>
+      <line num="92" type="stmt" count="3"/>
+      <line num="94" type="stmt" count="3"/>
       <metrics loc="96" ncloc="93" classes="1" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="37" coveredstatements="37" elements="46" coveredelements="46"/>
     </file>
     <file name="C:\Users\d_coo\dbwebb-kurser\mvc\me\game\src\Dice\GraphicalDice.php">
       <class name="Erru\Dice\GraphicalDice" namespace="global">
         <metrics complexity="3" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="8" coveredelements="8"/>
       </class>
-      <line num="14" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="18"/>
-      <line num="16" type="stmt" count="18"/>
-      <line num="17" type="stmt" count="18"/>
-      <line num="19" type="method" name="makeDie" visibility="public" complexity="1" crap="1" count="9"/>
-      <line num="21" type="stmt" count="9"/>
-      <line num="22" type="stmt" count="9"/>
-      <line num="24" type="method" name="getClass" visibility="public" complexity="1" crap="1" count="9"/>
-      <line num="26" type="stmt" count="9"/>
+      <line num="14" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="21"/>
+      <line num="16" type="stmt" count="21"/>
+      <line num="17" type="stmt" count="21"/>
+      <line num="19" type="method" name="makeDie" visibility="public" complexity="1" crap="1" count="12"/>
+      <line num="21" type="stmt" count="12"/>
+      <line num="22" type="stmt" count="12"/>
+      <line num="24" type="method" name="getClass" visibility="public" complexity="1" crap="1" count="12"/>
+      <line num="26" type="stmt" count="12"/>
       <metrics loc="28" ncloc="25" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="8" coveredelements="8"/>
     </file>
     <file name="C:\Users\d_coo\dbwebb-kurser\mvc\me\game\src\Dice\YatzyFunctions.php">
       <class name="Erru\Dice\YatzyFunctions" namespace="global">
-        <metrics complexity="30" methods="10" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="72" coveredstatements="46" elements="82" coveredelements="52"/>
+        <metrics complexity="30" methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="72" coveredstatements="72" elements="82" coveredelements="82"/>
       </class>
       <line num="12" type="method" name="checkPosts" visibility="public" complexity="3" crap="3" count="1"/>
       <line num="14" type="stmt" count="1"/>
@@ -284,40 +284,40 @@
       <line num="42" type="stmt" count="1"/>
       <line num="43" type="stmt" count="1"/>
       <line num="45" type="stmt" count="2"/>
-      <line num="47" type="method" name="forceRoll" visibility="private" complexity="1" crap="2" count="0"/>
-      <line num="49" type="stmt" count="0"/>
-      <line num="50" type="stmt" count="0"/>
-      <line num="51" type="stmt" count="0"/>
-      <line num="52" type="stmt" count="0"/>
-      <line num="53" type="stmt" count="0"/>
-      <line num="55" type="method" name="keepDice" visibility="public" complexity="5" crap="15.55" count="1"/>
-      <line num="57" type="stmt" count="1"/>
-      <line num="58" type="stmt" count="0"/>
-      <line num="59" type="stmt" count="0"/>
-      <line num="61" type="stmt" count="0"/>
-      <line num="62" type="stmt" count="0"/>
-      <line num="63" type="stmt" count="0"/>
-      <line num="65" type="stmt" count="0"/>
-      <line num="67" type="stmt" count="1"/>
-      <line num="69" type="method" name="keepRoll" visibility="private" complexity="1" crap="2" count="0"/>
-      <line num="71" type="stmt" count="0"/>
-      <line num="72" type="stmt" count="0"/>
-      <line num="73" type="stmt" count="0"/>
-      <line num="74" type="stmt" count="0"/>
-      <line num="75" type="stmt" count="0"/>
-      <line num="77" type="method" name="nextRound" visibility="public" complexity="5" crap="19.47" count="1"/>
-      <line num="79" type="stmt" count="1"/>
-      <line num="80" type="stmt" count="0"/>
-      <line num="81" type="stmt" count="0"/>
-      <line num="82" type="stmt" count="0"/>
-      <line num="83" type="stmt" count="0"/>
-      <line num="84" type="stmt" count="0"/>
-      <line num="85" type="stmt" count="0"/>
-      <line num="88" type="stmt" count="0"/>
-      <line num="89" type="stmt" count="0"/>
-      <line num="90" type="stmt" count="0"/>
-      <line num="91" type="stmt" count="0"/>
-      <line num="93" type="stmt" count="1"/>
+      <line num="47" type="method" name="forceRoll" visibility="private" complexity="1" crap="1" count="1"/>
+      <line num="49" type="stmt" count="1"/>
+      <line num="50" type="stmt" count="1"/>
+      <line num="51" type="stmt" count="1"/>
+      <line num="52" type="stmt" count="1"/>
+      <line num="53" type="stmt" count="1"/>
+      <line num="55" type="method" name="keepDice" visibility="public" complexity="5" crap="5" count="3"/>
+      <line num="57" type="stmt" count="3"/>
+      <line num="58" type="stmt" count="2"/>
+      <line num="59" type="stmt" count="1"/>
+      <line num="61" type="stmt" count="2"/>
+      <line num="62" type="stmt" count="2"/>
+      <line num="63" type="stmt" count="1"/>
+      <line num="65" type="stmt" count="2"/>
+      <line num="67" type="stmt" count="3"/>
+      <line num="69" type="method" name="keepRoll" visibility="private" complexity="1" crap="1" count="2"/>
+      <line num="71" type="stmt" count="2"/>
+      <line num="72" type="stmt" count="2"/>
+      <line num="73" type="stmt" count="2"/>
+      <line num="74" type="stmt" count="2"/>
+      <line num="75" type="stmt" count="2"/>
+      <line num="77" type="method" name="nextRound" visibility="public" complexity="5" crap="5" count="2"/>
+      <line num="79" type="stmt" count="2"/>
+      <line num="80" type="stmt" count="1"/>
+      <line num="81" type="stmt" count="1"/>
+      <line num="82" type="stmt" count="1"/>
+      <line num="83" type="stmt" count="1"/>
+      <line num="84" type="stmt" count="1"/>
+      <line num="85" type="stmt" count="1"/>
+      <line num="88" type="stmt" count="1"/>
+      <line num="89" type="stmt" count="1"/>
+      <line num="90" type="stmt" count="1"/>
+      <line num="91" type="stmt" count="1"/>
+      <line num="93" type="stmt" count="2"/>
       <line num="95" type="method" name="setupTable" visibility="public" complexity="2" crap="2" count="1"/>
       <line num="97" type="stmt" count="1"/>
       <line num="98" type="stmt" count="1"/>
@@ -341,7 +341,7 @@
       <line num="125" type="stmt" count="1"/>
       <line num="127" type="stmt" count="1"/>
       <line num="129" type="stmt" count="2"/>
-      <metrics loc="130" ncloc="127" classes="1" methods="10" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="72" coveredstatements="46" elements="82" coveredelements="52"/>
+      <metrics loc="130" ncloc="127" classes="1" methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="72" coveredstatements="72" elements="82" coveredelements="82"/>
     </file>
     <file name="C:\Users\d_coo\dbwebb-kurser\mvc\me\game\src\functions.php">
       <line num="19" type="stmt" count="1"/>
@@ -405,6 +405,6 @@
       <line num="188" type="stmt" count="1"/>
       <metrics loc="188" ncloc="135" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="59" coveredstatements="26" elements="59" coveredelements="26"/>
     </file>
-    <metrics files="13" loc="837" ncloc="747" classes="12" methods="42" coveredmethods="28" conditionals="0" coveredconditionals="0" statements="287" coveredstatements="163" elements="329" coveredelements="191"/>
+    <metrics files="13" loc="837" ncloc="747" classes="12" methods="42" coveredmethods="32" conditionals="0" coveredconditionals="0" statements="287" coveredstatements="189" elements="329" coveredelements="221"/>
   </project>
 </coverage>

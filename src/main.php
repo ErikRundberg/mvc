@@ -24,7 +24,7 @@ use Erru\Dice\DiceHand;
 //
 // var_dump($gdice->makeDie());
 
-$dh = new DiceHand(3);
-$dh->rollAll();
-echo $dh->getSum() . "\n";
-var_dump($dh->getResult());
+// $dh = new DiceHand(3);
+// $dh->rollAll();
+// echo $dh->getSum() . "\n";
+// var_dump($dh->getResult());

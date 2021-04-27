@@ -11,9 +11,9 @@ class GraphicalDice extends Dice
 {
     private $class = [];
 
-    public function __construct()
+    public function __construct($sides = 6)
     {
-        parent::__construct(6);
+        parent::__construct($sides);
     }
 
     public function makeDie(): void

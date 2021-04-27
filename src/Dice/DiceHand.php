@@ -16,10 +16,10 @@ class DiceHand extends GraphicalDice
     private $allThrows = [];
     private $sum;
 
-    public function __construct($dices)
+    public function __construct($dices, $sides = 6)
     {
         for ($i = 0; $i < $dices; $i++) {
-            $this->dices[$i] = new GraphicalDice();
+            $this->dices[$i] = new GraphicalDice($sides);
         }
     }
 

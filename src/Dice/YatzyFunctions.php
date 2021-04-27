@@ -57,13 +57,12 @@ class YatzyFunctions
         if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["keepDice"])) {
             if (empty($_POST["diceArray"])) {
                 $this->forceRoll();
-            } else {
-                $keptDice = [];
-                foreach ($_POST["diceArray"] as $dice) {
-                    $keptDice[] = $dice;
-                }
-                $this->keepRoll($keptDice);
             }
+            $keptDice = [];
+            foreach ($_POST["diceArray"] as $dice) {
+                $keptDice[] = $dice;
+            }
+            $this->keepRoll($keptDice);
         }
     }
 
@@ -121,14 +120,11 @@ class YatzyFunctions
                 $sum += $_SESSION["tableData"][$i];
             }
             $_SESSION["tableData"][6] = $sum;
+            $_SESSION["tableData"][7] = 0;
             if ($sum >= 50) {
                 $_SESSION["tableData"][7] = 50;
-            } else {
-                $_SESSION["tableData"][7] = 0;
             }
             $_SESSION["tableData"][8] = $sum + $_SESSION["tableData"][7];
         }
     }
 }
-
-// checkbox value = dice.value (maybe position?)

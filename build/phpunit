@@ -1,0 +1,14 @@
+PHPUnit 9.5.4 by Sebastian Bergmann and contributors.
+
+Warning:       Your XML configuration validates against a deprecated schema.
+Suggestion:    Migrate your XML configuration using "--migrate-configuration"!
+
+................                                                  16 / 16 (100%)
+
+Time: 00:00.352, Memory: 14.00 MB
+
+OK (16 tests, 29 assertions)
+
+Generating code coverage report in Clover XML format ... done [00:00.146]
+
+Generating code coverage report in HTML format ... done [00:00.184]

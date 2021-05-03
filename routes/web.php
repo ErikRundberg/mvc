@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Debug;
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\SessionController;
+use App\Http\Controllers\DebugController;
+use App\Http\Controllers\FormController;
+use App\Http\Controllers\YatzyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,39 +18,21 @@ use App\Http\Controllers\Debug;
 |
 */
 
-Route::get('/', function () {
-    $data = [
-        "header" => "Index",
-        "message" => "Hello, this is the index page."
-    ];
-    return view('index', $data);
-});
+Route::get('/', [IndexController::class, 'show']);
 
-Route::get('/session', function () {
-    return view('session');
-});
+Route::get('/session', [SessionController::class, 'show']);
 
-Route::get('/session/destroy', function () {
-    session()->flush();
-    return view('session');
-});
+Route::get('/session/destroy', [SessionController::class, 'destroy']);
 
-Route::get('/debug', function () {
-    return view('debug');
-});
+Route::get('/debug', [DebugController::class, 'show']);
 
 
-Route::get('/form/view', function () {
-    $data = [
-        "header" => "Form",
-        "message" => "Press submit to send the message to the result page",
-        "action" => url("/form/process"),
-        "output" => session("output") ?? null
-    ];
-    return view("form", $data);
-});
+Route::get('/form/view', [FormController::class, 'show']);
 
 Route::post('/form/process', function() {
     session()->put("output", Request::get("content") ?? null);
     return redirect()->back();
 });
+
+Route::get('/yatzy', [YatzyController::class, 'show']);
+Route::post('/yatzy', [YatzyController::class, 'show']);

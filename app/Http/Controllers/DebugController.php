@@ -9,10 +9,10 @@ use App\Http\Controllers\Controller;
 /**
  * Controller for the debug route.
  */
-class Debug extends Controller
+class DebugController extends Controller
 {
-    public function __invoke()
+    public function show()
     {
-        return view("debug");
+        return view('debug');
     }
 }

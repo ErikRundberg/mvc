@@ -1,21 +1,20 @@
-<IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews -Indexes
-    </IfModule>
+#
+# This is a modified rewrite to fit when working on both local development
+# environment and publishing to www.student.bth.se.
+#
+# Do NOT forget to change /~mosstud/ to your own student acronym.
+#
+RewriteEngine on
 
-    RewriteEngine On
+# Igore real files (images, stylesheets etc.)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule (.*) - [NC,L]
 
-    # Handle Authorization Header
-    RewriteCond %{HTTP:Authorization} .
-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+# Rewrite 1 - For request via www.student.bth.se
+RewriteCond %{HTTP_HOST} ^www\.student\.bth\.se$ [NC]
+RewriteRule (.*) /~erru17/dbwebb-kurser/mvc/me/framework-test/laravel/app/public/index.php/$1 [NC,L]
 
-    # Redirect Trailing Slashes If Not A Folder...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [L,R=301]
-
-    # Send Requests To Front Controller...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
-</IfModule>
+# Rewrite 2 - For other requests
+RewriteCond %{HTTP_HOST} !^www\.student\.bth\.se$ [NC]
+RewriteRule (.*) index.php/$1 [NC,L]

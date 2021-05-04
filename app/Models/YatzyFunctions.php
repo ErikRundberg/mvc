@@ -88,7 +88,7 @@ class YatzyFunctions
                     $sum += $throw;
                 }
             }
-            session()->push("tableScore", $sum);
+            session(["tableScore.".$round => $sum]);
             session(["yatzyRound" => $round + 2]);
             session(["roll" => 0]);
             session(["yatzyDice" => null]);
@@ -117,16 +117,15 @@ class YatzyFunctions
             $sum = 0;
             session(["yatzyDice" => null]);
             for ($i = 0; $i < 6; $i++) {
-                $sum += session("tableScore"[$i]);
+                $sum += session("tableScore.".$i);
             }
+
             session()->push("tableScore", $sum);
-            session(["tableScore"[7] => 0]);
+            session(["tableScore.7" => 0]);
             if ($sum >= 50) {
-                session()->push("tableScore", 50);
-            } else {
-                session()->push("tableScore", 0);
+                session(["tableScore.7" => 50]);
             }
-            session()->push("tableScore", $sum + session("tableScore"[7]));
+            session(["tableScore.8" => $sum + session("tableScore.7")]);
         }
     }
 }

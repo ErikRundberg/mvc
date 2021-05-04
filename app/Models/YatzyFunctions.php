@@ -3,19 +3,16 @@
 declare(strict_types=1);
 
 namespace App\Models;
+
+use Request;
 /**
  * Yatzy Functions.
  */
+
 class YatzyFunctions
 {
     public function checkPosts(): void
     {
-        $sessionKeys = ["yatzyDice", "yatzyRound", "roll", "diceArray", "tableData", "table"];
-        foreach ($sessionKeys as $key) {
-            if (!isset($_SESSION[$key])) {
-                $_SESSION[$key] = null;
-            }
-        }
         $this->startYatzy();
         $this->keepDice();
         $this->rollDice();
@@ -25,40 +22,45 @@ class YatzyFunctions
 
     public function startYatzy(): void
     {
-        if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["startYatzy"])) {
-            $_SESSION["yatzyRound"] = 1;
-            $_SESSION["DiceHand"] = null;
-            $_SESSION["roll"] = 0;
+        if (Request::server("REQUEST_METHOD") == "POST" and Request::has("startYatzy")) {
+            session(["yatzyRound" => 1]);
+            session(["DiceHand" => null]);
+            session(["roll" => 0]);
             $this->setupTable();
         }
     }
 
     public function rollDice(): void
     {
-        if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["rollYatzy"])) {
-            $_SESSION["roll"] += 1 ?? 1;
-            $_SESSION["DiceHand"] = new DiceHand(5);
-            $_SESSION["DiceHand"]->rollAll();
-            $_SESSION["yatzyDice"] = $_SESSION["DiceHand"]->getResult();
+        if (Request::server("REQUEST_METHOD") == "POST" and Request::has("rollYatzy")) {
+            $roll = (session("roll") + 1) ?? 1;
+            session(["roll" => $roll]);
+            $diceHand = new DiceHand(5);
+            $diceHand->rollAll();
+            session(["throws" => $diceHand->getThrows()]);
+            session(["yatzyDice" => $diceHand->getResult()]);
         }
     }
 
     private function forceRoll(): void
     {
-        $_SESSION["roll"] += 1 ?? 1;
-        $_SESSION["DiceHand"] = new DiceHand(5);
-        $_SESSION["DiceHand"]->rollAll();
-        $_SESSION["yatzyDice"] = $_SESSION["DiceHand"]->getResult();
+        $roll = (session("roll") + 1) ?? 1;
+        session(["roll" => $roll]);
+        $diceHand = new DiceHand(5);
+        $diceHand->rollAll();
+        session(["throws" => $diceHand->getThrows()]);
+        session(["yatzyDice" => $diceHand->getResult()]);
     }
 
     public function keepDice(): void
     {
-        if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["keepDice"])) {
-            if (empty($_POST["diceArray"])) {
-                $this->forceRoll();
-            }
+        if (Request::server("REQUEST_METHOD") == "POST" and Request::has("keepDice")) {
             $keptDice = [];
-            foreach ($_POST["diceArray"] as $dice) {
+            if (!Request::filled("diceArray")) {
+                $this->forceRoll();
+                return;
+            }
+            foreach (Request::input("diceArray") as $dice) {
                 $keptDice[] = $dice;
             }
             $this->keepRoll($keptDice);
@@ -67,63 +69,64 @@ class YatzyFunctions
 
     private function keepRoll($keptDice = [0]): void
     {
-        $_SESSION["roll"] += 1 ?? 1;
-        $_SESSION["DiceHand"] = new DiceHand(5);
-        $_SESSION["DiceHand"]->rollAll();
-        $_SESSION["yatzyDice"] = $_SESSION["DiceHand"]->getKeptResult($keptDice);
+        $roll = (session("roll") + 1) ?? 1;
+        session(["roll" => $roll]);
+        $diceHand = new DiceHand(5);
+        $diceHand->rollAll();
+        session(["throws" => $diceHand->getThrows()]);
+        session(["yatzyDice" => $diceHand->getKeptResult($keptDice)]);
     }
 
     public function nextRound(): void
     {
-        if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["nextRound"])) {
-            $round = $_SESSION["yatzyRound"] - 1;
+        if (Request::server("REQUEST_METHOD") == "POST" and Request::has("nextRound")) {
+            $throws = session("throws");
+            $round = session("yatzyRound") - 1;
             $sum = 0;
-            $throws = $_SESSION["DiceHand"]->getThrows();
             foreach ($throws as $throw) {
                 if ($throw == $round + 1) {
                     $sum += $throw;
                 }
             }
-            $_SESSION["tableData"][$round] = $sum;
-            $_SESSION["yatzyRound"] += 1;
-            $_SESSION["roll"] = 0;
-            $_SESSION["yatzyDice"] = null;
+            session()->push("tableScore", $sum);
+            session(["yatzyRound" => $round + 2]);
+            session(["roll" => 0]);
+            session(["yatzyDice" => null]);
         }
     }
 
     public function setupTable(): void
     {
-        $_SESSION["table"] = ["1", "2", "3", "4", "5", "6", "Sum", "Bonus", "Total"];
-        foreach (range(0, 8) as $index) {
-            $_SESSION["tableData"][$index] = "";
-        }
+        session(["tableName" => ["1", "2", "3", "4", "5", "6", "Sum", "Bonus", "Total"]]);
     }
 
     public function getRound(): ?string
     {
-        if (isset($_SESSION["yatzyRound"])) {
-            if ($_SESSION["yatzyRound"] > 6) {
+        if (null != session("yatzyRound")) {
+            if (session("yatzyRound") > 6) {
                 return "Game Finished!";
             }
-            return "Round: " . $_SESSION["yatzyRound"];
+            return "Round: " . session("yatzyRound");
         }
         return null;
     }
 
     public function endGame(): void
     {
-        if ($_SESSION["yatzyRound"] == 7) {
+        if (session("yatzyRound") == 7) {
             $sum = 0;
-            $_SESSION["yatzyDice"] = null;
+            session(["yatzyDice" => null]);
             for ($i = 0; $i < 6; $i++) {
-                $sum += $_SESSION["tableData"][$i];
+                $sum += session("tableScore"[$i]);
             }
-            $_SESSION["tableData"][6] = $sum;
-            $_SESSION["tableData"][7] = 0;
+            session()->push("tableScore", $sum);
+            session(["tableScore"[7] => 0]);
             if ($sum >= 50) {
-                $_SESSION["tableData"][7] = 50;
+                session()->push("tableScore", 50);
+            } else {
+                session()->push("tableScore", 0);
             }
-            $_SESSION["tableData"][8] = $sum + $_SESSION["tableData"][7];
+            session()->push("tableScore", $sum + session("tableScore"[7]));
         }
     }
 }

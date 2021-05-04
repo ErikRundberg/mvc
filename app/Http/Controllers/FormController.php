@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Request;
 
 /**
  * Controller for the form route.
@@ -20,5 +21,11 @@ class FormController extends Controller
             "output" => session("output") ?? null
         ];
         return view("form", $data);
+    }
+
+    public function process()
+    {
+        session()->put("output", Request::get("content") ?? null);
+        return redirect()->back();
     }
 }

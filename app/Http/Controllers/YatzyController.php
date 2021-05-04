@@ -20,8 +20,9 @@ class YatzyController extends Controller
         $data = [
             "title" => "Yatzy",
             "header" => $yatzy->getRound(),
-            "dice" => session('yatzyDice'),
-            "table" => [session('table'), session('tableData')]
+            "dice" => session("yatzyDice"),
+            "tableName" => session('tableName'),
+            "tableScore" => session('tableScore')
         ];
         return view("yatzy", $data);
     }

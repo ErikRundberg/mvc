@@ -28,11 +28,7 @@ Route::get('/debug', [DebugController::class, 'show']);
 
 
 Route::get('/form/view', [FormController::class, 'show']);
-
-Route::post('/form/process', function() {
-    session()->put("output", Request::get("content") ?? null);
-    return redirect()->back();
-});
+Route::post('/form/process', [FormController::class, 'process']);
 
 Route::get('/yatzy', [YatzyController::class, 'show']);
 Route::post('/yatzy', [YatzyController::class, 'show']);

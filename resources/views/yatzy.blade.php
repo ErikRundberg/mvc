@@ -4,7 +4,7 @@
     <h1>{{ $header }}</h1>
 
         <!-- Start game -->
-@if (null === (session("yatzyRound")))
+@if (null == (session("yatzyRound")))
     <form method="post">
         @csrf
         <button type="submit" name="startYatzy">Start</button>
@@ -16,7 +16,7 @@
 @if (session("yatzyRound") <= 6)
     <div class="center big">
     <!-- Roll die -->
-@if (null !== (session("yatzyRound") and session("roll") != 3))
+@if (null != (session("yatzyRound") and session("roll") != 3))
         <p>Roll: {{ session("roll") }}/3</p>
         <form method="post">
             @csrf
@@ -25,7 +25,7 @@
 @endif
 
     <!-- Keep die -->
-@if (null !== (session("yatzyDice")))
+@if (null != (session("yatzyDice")))
     <form method="post">
         @csrf
         <div class="flex">
@@ -46,7 +46,7 @@
 @endif
     </form>
     <!-- Next round button -->
-@if (null !== (session("yatzyDice")))
+@if (null != (session("yatzyDice")))
     <br>
     <form class="flex" method="post">
         @csrf
@@ -60,7 +60,7 @@
 
     <!-- Score table -->
     <div class="center">
-@if (null !== (session("DiceHand")))
+@if (null != (session("yatzyRound")))
         <div class="flex">
             <table class="center right-border">
                 <thead>
@@ -70,10 +70,11 @@
                 <tbody>
 @foreach (range(0, 8) as $index)
                     <tr>
-                            <td>{{ $table[0][$index] }}</td>
-                            <td>{{ $table[1][$index] }}</td>
-                    </tr>
+                            <td>{{ $tableName[$index] }}</td>
+                            <td>{{ $tableScore[$index] ?? "" }}</td>
 @endforeach
+                    </tr>
+
                 </tbody>
             </table>
         </div>

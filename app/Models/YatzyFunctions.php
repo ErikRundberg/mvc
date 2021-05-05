@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Request;
+
 /**
  * Yatzy Functions.
+ * @SuppressWarnings(PHPMD.StaticAccess)
  */
 
 class YatzyFunctions
@@ -88,7 +90,7 @@ class YatzyFunctions
                     $sum += $throw;
                 }
             }
-            session(["tableScore.".$round => $sum]);
+            session(["tableScore." . $round => $sum]);
             session(["yatzyRound" => $round + 2]);
             session(["roll" => 0]);
             session(["yatzyDice" => null]);
@@ -117,7 +119,7 @@ class YatzyFunctions
             $sum = 0;
             session(["yatzyDice" => null]);
             for ($i = 0; $i < 6; $i++) {
-                $sum += session("tableScore.".$i);
+                $sum += session("tableScore." . $i);
             }
 
             session()->push("tableScore", $sum);

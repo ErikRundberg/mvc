@@ -14,7 +14,7 @@ class YatzyController extends Controller
 {
     public function show()
     {
-        $yatzy = new YatzyFunctions;
+        $yatzy = new YatzyFunctions();
         $yatzy->checkPosts();
 
         $data = [

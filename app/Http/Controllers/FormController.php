@@ -9,6 +9,7 @@ use Request;
 
 /**
  * Controller for the form route.
+ * @SuppressWarnings(PHPMD.StaticAccess)
  */
 class FormController extends Controller
 {

@@ -1,0 +1,14 @@
+parameters:
+    level: 5
+    paths:
+        - app/Http
+        - app/Models
+        - tests
+    bootstrapFiles:
+        - .phpstan.constants.php
+    ignoreErrors:
+        - '#Call to static method has\(\) on an unknown class Request.#'
+        - '#Call to static method server\(\) on an unknown class Request.#'
+        - '#Call to static method filled\(\) on an unknown class Request.#'
+        - '#Call to static method input\(\) on an unknown class Request.#'
+        - '#Call to static method get\(\) on an unknown class Request.#'

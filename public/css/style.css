@@ -80,3 +80,10 @@ table {
 table * {
   padding: 0.25em 0.5em;
 }
+
+.book-img {
+  width: 150px;
+  height: 250px;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -6,6 +6,7 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\DebugController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\YatzyController;
+use App\Http\Controllers\BooksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,5 @@ Route::post('/form/process', [FormController::class, 'process']);
 
 Route::get('/yatzy', [YatzyController::class, 'show']);
 Route::post('/yatzy', [YatzyController::class, 'show']);
+
+Route::get('/books', [BooksController::class, 'show']);

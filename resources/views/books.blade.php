@@ -6,7 +6,7 @@
 
 @if (!empty($books))
 <h1>Böcker</h1>
-<table>
+<table class="db-table">
     <thead>
         <tr>
             <th>Titel</th>

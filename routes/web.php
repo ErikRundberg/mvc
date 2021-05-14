@@ -7,6 +7,7 @@ use App\Http\Controllers\DebugController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\YatzyController;
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\HighscoresController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,6 @@ Route::get('/session/destroy', [SessionController::class, 'destroy']);
 
 Route::get('/debug', [DebugController::class, 'show']);
 
-
 Route::get('/form/view', [FormController::class, 'show']);
 Route::post('/form/process', [FormController::class, 'process']);
 
@@ -35,3 +35,5 @@ Route::get('/yatzy', [YatzyController::class, 'show']);
 Route::post('/yatzy', [YatzyController::class, 'show']);
 
 Route::get('/books', [BooksController::class, 'show']);
+
+Route::get('/highscores', [HighscoresController::class, 'show']);

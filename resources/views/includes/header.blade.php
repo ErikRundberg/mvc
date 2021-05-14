@@ -15,6 +15,7 @@
             <a href="<?= url("/debug") ?>">Debug</a> |
             <a href="<?= url("/form/view") ?>">Form</a> |
             <a href="<?= url("/yatzy") ?>">Yatzy</a> |
+            <a href="<?= url("/highscores") ?>">Highscore</a> |
             <a href="<?= url("/books") ?>">Books</a>
         </nav>
     </header>

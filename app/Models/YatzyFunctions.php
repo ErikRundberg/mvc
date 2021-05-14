@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Yatzy Functions.
@@ -57,13 +58,14 @@ class YatzyFunctions
     public function keepDice(): void
     {
         if (Request::server("REQUEST_METHOD") == "POST" and Request::has("keepDice")) {
-            $keptDice = [];
-            if (!Request::filled("diceArray")) {
+            if (empty(Request::input("diceArray"))) {
                 $this->forceRoll();
-                return;
             }
-            foreach (Request::input("diceArray") as $dice) {
-                $keptDice[] = $dice;
+            $keptDice = [];
+            if (Request::input("diceArray")) {
+                foreach (Request::input("diceArray") as $dice) {
+                    $keptDice[] = $dice;
+                }
             }
             $this->keepRoll($keptDice);
         }
@@ -128,6 +130,7 @@ class YatzyFunctions
                 session(["tableScore.7" => 50]);
             }
             session(["tableScore.8" => $sum + session("tableScore.7")]);
+            DB::insert('insert into highscores (score) values (?)', [session("tableScore.8")]);
         }
     }
 }

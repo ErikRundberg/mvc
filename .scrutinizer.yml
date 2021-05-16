@@ -11,6 +11,9 @@ build:
                 php:
                     version: 7.4
     tests:
+        before:
+            - make install
+            - php artisan key:generate
         override:
             -
                 command: "make phpunit"

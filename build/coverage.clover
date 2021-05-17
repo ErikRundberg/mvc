@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1621020878">
-  <project timestamp="1621020878">
+<coverage generated="1621250766">
+  <project timestamp="1621250766">
     <file name="C:\Users\d_coo\dbwebb-kurser\mvc\me\ci\app\Models\Book.php">
       <class name="App\Models\Book" namespace="global">
         <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>

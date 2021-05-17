@@ -11,8 +11,6 @@ build:
                 php:
                     version: 7.4
     tests:
-        before:
-            - 'cp .env.scrutinizer .env'
         override:
             - php-scrutinizer-run
             -
